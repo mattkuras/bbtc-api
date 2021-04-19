@@ -15,7 +15,7 @@ module Api::V1
             token = encode_token(payload)
             render json: { admin: admin, jwt: token, success: "hey dude" }
           else
-            render json: { failure: "there was an error logging in. check your email and password" }
+            render json: { status: 401 }
           end
         end
     end
