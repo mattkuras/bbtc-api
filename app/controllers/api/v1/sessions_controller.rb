@@ -9,8 +9,8 @@ module Api::V1
         end
       
         def login
-          admin = Admin.find_by(username: params[:username]) 
-          if admin&.authenticate(params[:password])
+          admin = Admin.find_by(username: params[:admin][:username]) 
+          if admin&.authenticate(params[:admin][:password])
             payload = { admin_id: admin.id }
             token = encode_token(payload)
             render json: { admin: admin, jwt: token, success: "hey dude" }
